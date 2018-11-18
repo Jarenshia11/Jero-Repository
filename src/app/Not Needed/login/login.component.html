@@ -1,0 +1,55 @@
+
+<ng-template appRepeat #rd="repeatElement" #cd="changeText">
+<p>
+  I am being repeated....
+</p>
+</ng-template>
+<button (click)="rd.appRepeat(5)">Repeat Element</button>
+<button (click)="cd.appChange(10)">Change Element</button>
+<p [style.background-color]="yellow" [style.color]="textColor">I am Jarenshia...</p>
+<h5 [ngStyle]="{
+  color:colorName,
+  'font-weight':fontWeight,
+  borderBottom:borderStyle
+}">New Look..</h5>
+<button [appMessage]="message">Click Me...</button>
+<div class="container" style="position: relative;top:180px;width:50%">
+  <div class="col-xs-7 col-xs-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Login
+      </div> 
+      <div class="panel-body">
+        <form class="form-horizontal" #loginForm="ngForm">
+          <div class="form-group">
+            <label for="name" class="col-xs-5 control-label" >User Name</label>
+           
+            <div class="col-xs-7"><input class="form-control" type="text" name="username" [(ngModel)]="UserName" #username="ngModel" required></div>  
+          
+            <div class="alert alert-danger" *ngIf="username.touched && !userName.valid">UserName is Invalid</div>        
+
+            
+          </div> 
+          <div class="form-group">
+            <label class="col-xs-5 control-label">Password</label>
+            <div class="col-xs-7"><input type="password" class="form-control" name="password"[(ngModel)]="Password" #password="ngModel" required></div>
+            <div class="alert alert-danger" *ngIf="password.touched && !password.valid">UserName is Invalid</div>  
+          </div>
+          <div class="form-group">
+            <span class="col-xs-4"></span>
+            <div class="col-xs-3"><button (ngSubmit)="onSubmit()"[disabled]="!loginForm.form.valid" class="btn btn-primary">Login</button></div>
+            <!-- <span class="col-xs-5" style="top:8px">
+              <a [routerLink]="['/welcome']" style="color:#337ab7;text-decoration: underline;">Cancel</a>
+            </span> -->
+
+          </div>
+        </form>
+      </div>
+      <!-- <div *ngIf="!valid">Invalid credentials...Please try again...</div> -->
+      <br/>
+
+
+    </div>
+    
+  </div>
+</div>
